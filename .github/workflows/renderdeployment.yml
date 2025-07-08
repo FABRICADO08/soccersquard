@@ -167,15 +167,16 @@ jobs:
     - name: Notify on failure
       if: failure()
       run: |
-        echo "❌ Deployment to Render failed for environment: ${{ github.event.inputs.environment }}"
+        echo "::error title=Deployment Failed::❌ Deployment to Render failed for environment: ${{ github.event.inputs.environment }}"
         echo ""
-        echo "**Details:**"
+        echo "**Failure Details:**"
+        echo "- Environment: ${{ github.event.inputs.environment }}"
         echo "- Commit: ${{ github.sha }}"
         echo "- Triggered by: ${{ github.actor }}"
         echo "- Workflow: ${{ github.workflow }}"
+        echo "- Run ID: ${{ github.run_id }}"
         echo ""
-        echo "Please check the workflow logs for more details:"
-        echo "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+        echo "📋 Workflow logs: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
 
   cleanup:
     runs-on: ubuntu-latest
