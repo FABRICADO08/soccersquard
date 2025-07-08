@@ -166,17 +166,22 @@ jobs:
         
     - name: Notify on failure
       if: failure()
-      run: |
-        echo "::error title=Deployment Failed::❌ Deployment to Render failed for environment: ${{ github.event.inputs.environment }}"
-        echo ""
-        echo "**Failure Details:**"
-        echo "- Environment: ${{ github.event.inputs.environment }}"
-        echo "- Commit: ${{ github.sha }}"
-        echo "- Triggered by: ${{ github.actor }}"
-        echo "- Workflow: ${{ github.workflow }}"
-        echo "- Run ID: ${{ github.run_id }}"
-        echo ""
-        echo "📋 Workflow logs: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+      uses: actions/github-script@v7
+      with:
+        script: |
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: `❌ Deployment to Render failed for environment: ${{ github.event.inputs.environment }}
+            
+            **Details:**
+            - Commit: ${{ github.sha }}
+            - Triggered by: ${{ github.actor }}
+            - Workflow: ${{ github.workflow }}
+            
+            Please check the [workflow logs](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) for more details.`
+          })
 
   cleanup:
     runs-on: ubuntu-latest
