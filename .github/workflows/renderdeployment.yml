@@ -26,66 +26,60 @@ env:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-      
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-        
-    - name: Install Mendix CLI
+
+    - name: Build Mendix Application with Docker Buildpack
       run: |
-        npm install -g @mendix/cli
-        
-    - name: Configure Mendix CLI
-      run: |
-        mendix login --username $MENDIX_USERNAME --apikey $MENDIX_APIKEY
-        
-    - name: Build Mendix application
-      run: |
-        echo "Building Mendix application..."
-        mendix build --target-dir ./dist
-        
+        echo "Building Mendix app with Docker buildpack..."
+        docker run --rm \
+          -v "$PWD:/build" \
+          -e MENDIX_USERNAME="$MENDIX_USERNAME" \
+          -e MENDIX_APIKEY="$MENDIX_APIKEY" \
+          mendix/buildpack build \
+            --project-path /build \
+            --output /build/dist \
+            --runtime-version "${{ github.event.inputs.mendix_version || 'latest' }}"
+
     - name: Create deployment package
       run: |
         echo "Creating deployment package..."
         tar -czf mendix-app.tar.gz -C ./dist .
-        
+
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
-      
+
     - name: Build Docker image
       run: |
         cat > Dockerfile << 'EOF'
         FROM mendix/runtime:${{ github.event.inputs.mendix_version || 'latest' }}
-        
+
         # Copy the Mendix application
-        COPY --from=build /app/dist /app
-        
+        COPY dist /app
+
         # Set environment variables
         ENV MENDIX_RUNTIME_PATH=/app
         ENV PORT=8080
-        
+
         # Expose port
         EXPOSE 8080
-        
+
         # Health check
         HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
           CMD curl -f http://localhost:8080/health || exit 1
-        
+
         # Start the application
         CMD ["start-app"]
         EOF
-        
+
         docker build -t mendix-app:${{ github.sha }} .
-        
+
     - name: Deploy to Render
       run: |
         echo "Deploying to Render..."
-        
+
         # Create deployment payload
         DEPLOYMENT_PAYLOAD=$(cat <<EOF
         {
@@ -95,29 +89,29 @@ jobs:
         }
         EOF
         )
-        
+
         # Trigger deployment
         DEPLOY_RESPONSE=$(curl -X POST \
           -H "Authorization: Bearer $RENDER_API_KEY" \
           -H "Content-Type: application/json" \
           -d "$DEPLOYMENT_PAYLOAD" \
           https://api.render.com/v1/services/$RENDER_SERVICE_ID/deploys)
-        
+
         echo "Deployment response: $DEPLOY_RESPONSE"
-        
+
         # Extract deployment ID
         DEPLOY_ID=$(echo $DEPLOY_RESPONSE | jq -r '.deploy.id')
         echo "Deployment ID: $DEPLOY_ID"
-        
+
         # Wait for deployment to complete
         echo "Waiting for deployment to complete..."
         while true; do
           STATUS=$(curl -s -H "Authorization: Bearer $RENDER_API_KEY" \
             https://api.render.com/v1/services/$RENDER_SERVICE_ID/deploys/$DEPLOY_ID | \
             jq -r '.deploy.status')
-          
+
           echo "Deployment status: $STATUS"
-          
+
           if [ "$STATUS" = "live" ]; then
             echo "✅ Deployment successful!"
             break
@@ -125,21 +119,21 @@ jobs:
             echo "❌ Deployment failed with status: $STATUS"
             exit 1
           fi
-          
+
           sleep 30
         done
-        
+
     - name: Run post-deployment tests
       run: |
         echo "Running post-deployment health checks..."
-        
+
         # Get service URL
         SERVICE_URL=$(curl -s -H "Authorization: Bearer $RENDER_API_KEY" \
           https://api.render.com/v1/services/$RENDER_SERVICE_ID | \
           jq -r '.service.serviceDetails.url')
-        
+
         echo "Service URL: $SERVICE_URL"
-        
+
         # Health check
         for i in {1..10}; do
           if curl -f "$SERVICE_URL/health" > /dev/null 2>&1; then
@@ -150,7 +144,7 @@ jobs:
             sleep 30
           fi
         done
-        
+
     - name: Update deployment status
       if: always()
       run: |
@@ -163,7 +157,7 @@ jobs:
           echo "❌ Deployment failed"
           echo "Please check the logs above for more details"
         fi
-        
+
     - name: Notify on failure
       if: failure()
       uses: actions/github-script@v7
@@ -187,7 +181,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: deploy
     if: always()
-    
+
     steps:
     - name: Cleanup temporary files
       run: |
