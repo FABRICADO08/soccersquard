@@ -166,22 +166,16 @@ jobs:
         
     - name: Notify on failure
       if: failure()
-      uses: actions/github-script@v7
-      with:
-        script: |
-          github.rest.issues.createComment({
-            issue_number: context.issue.number,
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            body: `❌ Deployment to Render failed for environment: ${{ github.event.inputs.environment }}
-            
-            **Details:**
-            - Commit: ${{ github.sha }}
-            - Triggered by: ${{ github.actor }}
-            - Workflow: ${{ github.workflow }}
-            
-            Please check the [workflow logs](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) for more details.`
-          })
+      run: |
+        echo "❌ Deployment to Render failed for environment: ${{ github.event.inputs.environment }}"
+        echo ""
+        echo "**Details:**"
+        echo "- Commit: ${{ github.sha }}"
+        echo "- Triggered by: ${{ github.actor }}"
+        echo "- Workflow: ${{ github.workflow }}"
+        echo ""
+        echo "Please check the workflow logs for more details:"
+        echo "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
 
   cleanup:
     runs-on: ubuntu-latest
