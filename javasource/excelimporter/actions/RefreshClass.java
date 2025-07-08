@@ -11,15 +11,19 @@ package excelimporter.actions;
 
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
+import com.mendix.systemwideinterfaces.core.UserAction;
 
-public class RefreshClass extends CustomJavaAction<java.lang.Boolean>
+public class RefreshClass extends UserAction<java.lang.Boolean>
 {
-	private java.lang.String objectType;
+	private final java.lang.String objectType;
 
-	public RefreshClass(IContext context, java.lang.String objectType)
+	public RefreshClass(
+		IContext context,
+		java.lang.String _objectType
+	)
 	{
 		super(context);
-		this.objectType = objectType;
+		this.objectType = _objectType;
 	}
 
 	@java.lang.Override

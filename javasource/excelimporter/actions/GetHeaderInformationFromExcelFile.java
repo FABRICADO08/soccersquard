@@ -12,32 +12,39 @@ package excelimporter.actions;
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
+import com.mendix.systemwideinterfaces.core.UserAction;
 
 /**
  * Synchronise all excel columns and add/update/remove the existing columns from the template in the parameter.
  * The return value is irrelevant and will be always true
  */
-public class GetHeaderInformationFromExcelFile extends CustomJavaAction<java.lang.Boolean>
+public class GetHeaderInformationFromExcelFile extends UserAction<java.lang.Boolean>
 {
-	private IMendixObject __TemplateObject;
-	private excelimporter.proxies.Template TemplateObject;
-	private IMendixObject __ExcelFileDocument;
-	private excelimporter.proxies.TemplateDocument ExcelFileDocument;
+	/** @deprecated use TemplateObject.getMendixObject() instead. */
+	@java.lang.Deprecated(forRemoval = true)
+	private final IMendixObject __TemplateObject;
+	private final excelimporter.proxies.Template TemplateObject;
+	/** @deprecated use ExcelFileDocument.getMendixObject() instead. */
+	@java.lang.Deprecated(forRemoval = true)
+	private final IMendixObject __ExcelFileDocument;
+	private final excelimporter.proxies.TemplateDocument ExcelFileDocument;
 
-	public GetHeaderInformationFromExcelFile(IContext context, IMendixObject TemplateObject, IMendixObject ExcelFileDocument)
+	public GetHeaderInformationFromExcelFile(
+		IContext context,
+		IMendixObject _templateObject,
+		IMendixObject _excelFileDocument
+	)
 	{
 		super(context);
-		this.__TemplateObject = TemplateObject;
-		this.__ExcelFileDocument = ExcelFileDocument;
+		this.__TemplateObject = _templateObject;
+		this.TemplateObject = _templateObject == null ? null : excelimporter.proxies.Template.initialize(getContext(), _templateObject);
+		this.__ExcelFileDocument = _excelFileDocument;
+		this.ExcelFileDocument = _excelFileDocument == null ? null : excelimporter.proxies.TemplateDocument.initialize(getContext(), _excelFileDocument);
 	}
 
 	@java.lang.Override
 	public java.lang.Boolean executeAction() throws Exception
 	{
-		this.TemplateObject = this.__TemplateObject == null ? null : excelimporter.proxies.Template.initialize(getContext(), __TemplateObject);
-
-		this.ExcelFileDocument = this.__ExcelFileDocument == null ? null : excelimporter.proxies.TemplateDocument.initialize(getContext(), __ExcelFileDocument);
-
 		// BEGIN USER CODE
 		throw new com.mendix.systemwideinterfaces.MendixRuntimeException("Java action was not implemented");
 		// END USER CODE

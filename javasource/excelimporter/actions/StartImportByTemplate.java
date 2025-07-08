@@ -12,6 +12,7 @@ package excelimporter.actions;
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
+import com.mendix.systemwideinterfaces.core.UserAction;
 
 /**
  * Start the excel import, The parameter TemplateObject should be a valid parameter, this template is analysed and by this template configuration the filedocument (which should be an excel .xls file)
@@ -20,29 +21,36 @@ import com.mendix.systemwideinterfaces.core.IMendixObject;
  * 
  * The return value is irrelevant and will be always true
  */
-public class StartImportByTemplate extends CustomJavaAction<java.lang.Long>
+public class StartImportByTemplate extends UserAction<java.lang.Long>
 {
-	private IMendixObject __TemplateObject;
-	private excelimporter.proxies.Template TemplateObject;
-	private IMendixObject __ImportExcelDoc;
-	private system.proxies.FileDocument ImportExcelDoc;
-	private IMendixObject ImportObjectParameter;
+	/** @deprecated use TemplateObject.getMendixObject() instead. */
+	@java.lang.Deprecated(forRemoval = true)
+	private final IMendixObject __TemplateObject;
+	private final excelimporter.proxies.Template TemplateObject;
+	/** @deprecated use ImportExcelDoc.getMendixObject() instead. */
+	@java.lang.Deprecated(forRemoval = true)
+	private final IMendixObject __ImportExcelDoc;
+	private final system.proxies.FileDocument ImportExcelDoc;
+	private final IMendixObject ImportObjectParameter;
 
-	public StartImportByTemplate(IContext context, IMendixObject TemplateObject, IMendixObject ImportExcelDoc, IMendixObject ImportObjectParameter)
+	public StartImportByTemplate(
+		IContext context,
+		IMendixObject _templateObject,
+		IMendixObject _importExcelDoc,
+		IMendixObject _importObjectParameter
+	)
 	{
 		super(context);
-		this.__TemplateObject = TemplateObject;
-		this.__ImportExcelDoc = ImportExcelDoc;
-		this.ImportObjectParameter = ImportObjectParameter;
+		this.__TemplateObject = _templateObject;
+		this.TemplateObject = _templateObject == null ? null : excelimporter.proxies.Template.initialize(getContext(), _templateObject);
+		this.__ImportExcelDoc = _importExcelDoc;
+		this.ImportExcelDoc = _importExcelDoc == null ? null : system.proxies.FileDocument.initialize(getContext(), _importExcelDoc);
+		this.ImportObjectParameter = _importObjectParameter;
 	}
 
 	@java.lang.Override
 	public java.lang.Long executeAction() throws Exception
 	{
-		this.TemplateObject = this.__TemplateObject == null ? null : excelimporter.proxies.Template.initialize(getContext(), __TemplateObject);
-
-		this.ImportExcelDoc = this.__ImportExcelDoc == null ? null : system.proxies.FileDocument.initialize(getContext(), __ImportExcelDoc);
-
 		// BEGIN USER CODE
 		throw new com.mendix.systemwideinterfaces.MendixRuntimeException("Java action was not implemented");
 		// END USER CODE
