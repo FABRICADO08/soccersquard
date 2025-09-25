@@ -24,8 +24,8 @@ jobs:
         env:
           MENDIX_VERSION: '10.19.0'  # Replace with your app's Mendix version
         run: |
-          wget https://cdn.mendix.com/runtime/mxbuild-${{vars.mxversion}}.tar.gz
-          tar -xvf mxbuild-${{vars.mxversion}}.tar.gz
+          wget https://cdn.mendix.com/runtime/mxbuild-${MENDIX_VERSION}.tar.gz
+          tar -xvf mxbuild-${MENDIX_VERSION}.tar.gz
 
       - name: Build Mendix Deployment Package (MDA)
         env:
@@ -84,6 +84,7 @@ jobs:
           slot-name: 'Production'
           images: '${{ env.ACR_NAME }}.azurecr.io/soccersquard:${{ github.sha }}'
           
+
 
 
 
