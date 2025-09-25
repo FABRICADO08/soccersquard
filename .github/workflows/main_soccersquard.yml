@@ -1,7 +1,4 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
-name: Build and deploy JAR app to Azure Web App - Soccersquard
+name: Build and deploy Mendix app to Azure Web App - Soccersquard
 
 on:
   push:
@@ -13,39 +10,63 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: read #This is required for actions/checkout
+      contents: read
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Java version
-        uses: actions/setup-java@v4
-        with:
-          java-version: '11'
-          distribution: 'microsoft'
+      - name: Install Mono for MxBuild
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y mono-complete wget tar
 
-      - name: Build with Maven
-        run: mvn clean install
+      - name: Download MxBuild
+        env:
+          MENDIX_VERSION: '10.19.0'  # Replace with your app's Mendix version
+        run: |
+          wget https://cdn.mendix.com/runtime/mxbuild_${MENDIX_VERSION}.tar.gz
+          tar -xzf mxbuild_${MENDIX_VERSION}.tar.gz
 
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v4
+      - name: Build Mendix Deployment Package (MDA)
+        env:
+          MPR_FILE: 'Soccersquard.mpr'  # Replace with your .mpr file name/path
+        run: mono mxbuild/mxbuild.exe --output=target/app.mda --loose-mode $MPR_FILE --java-version=11
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Azure
+        uses: azure/login@v2
         with:
-          name: java-app
-          path: '${{ github.workspace }}/target/*.jar'
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_ED4B73A10338441B9E34E1DA490D661A }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_A1E39E2B1D174456942D99A9B12E510B }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_A24B7A63B97544CFA14FD74EF9B4BBB6 }}
+
+      - name: Login to ACR
+        env:
+          ACR_NAME: 'soccersquardacr'  # Replace with your ACR name
+        run: az acr login --name $ACR_NAME
+
+      - name: Build and push Docker image
+        env:
+          ACR_NAME: 'soccersquardacr'  # Replace with your ACR name
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: Dockerfile  # Assumes Dockerfile in repo root from mendix/docker-mendix-buildpack
+          push: true
+          tags: ${{ env.ACR_NAME }}.azurecr.io/soccersquard:${{ github.sha }}
+          build-args: |
+            BUILD_PATH=target
 
   deploy:
     runs-on: ubuntu-latest
     needs: build
     permissions:
-      id-token: write #This is required for requesting the JWT
-      contents: read #This is required for actions/checkout
-  
+      id-token: write
+      contents: read
+
     steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v4
-        with:
-          name: java-app
-      
       - name: Login to Azure
         uses: azure/login@v2
         with:
@@ -54,10 +75,12 @@ jobs:
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_A24B7A63B97544CFA14FD74EF9B4BBB6 }}
 
       - name: Deploy to Azure Web App
+        env:
+          ACR_NAME: 'soccersquardacr'  # Replace with your ACR name
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'Soccersquard'
           slot-name: 'Production'
-          package: '*.jar'
+          images: '${{ env.ACR_NAME }}.azurecr.io/soccersquard:${{ github.sha }}'
           
