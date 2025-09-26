@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ns1:ExcelTemplate xmlns:ns1="http://www.mendix.com/">
+  <Nr>2</Nr>
+  <Title>Testcase_ParseEmptyCells</Title>
+  <Description>This template parses a string with a microflow that fills the value depending on whether the cell is empty.
+The microflow should be executed for empty cells only if parameter EnableExternalEntities is set to True.</Description>
+  <SheetIndex>1</SheetIndex>
+  <HeaderRowNumber>1</HeaderRowNumber>
+  <FirstDataRowNumber>2</FirstDataRowNumber>
+  <Status>VALID</Status>
+  <ImportAction>CreateObjects</ImportAction>
+  <Column_Template>
+    <Column>
+      <ColNumber>1</ColNumber>
+      <Text>Name</Text>
+      <MappingType>Attribute</MappingType>
+      <IsKey>No</IsKey>
+      <IsReferenceKey>NoKey</IsReferenceKey>
+      <Status>VALID</Status>
+      <Details>Attribute: Name, type: String</Details>
+      <CaseSensitive>No</CaseSensitive>
+      <FindAttribute>Name</FindAttribute>
+      <FindReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindObjectType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindMicroflow>TEST_ExcelImporter.Sub_IsEmpty</FindMicroflow>
+      <DataSource>CellValue</DataSource>
+      <Column_MxObjectType_Reference/>
+      <Column_MxObjectType>
+        <MxObjectType>
+          <Name>State</Name>
+          <Module>TEST_ExcelImporter</Module>
+        </MxObjectType>
+      </Column_MxObjectType>
+      <Column_MxObjectMember>
+        <MxObjectMember>
+          <AttributeName>Name</AttributeName>
+          <CompleteName>TEST_ExcelImporter.State / Name</CompleteName>
+        </MxObjectMember>
+      </Column_MxObjectMember>
+      <Column_MxObjectMember_Reference/>
+      <Column_MxObjectReference/>
+      <Column_Microflows>
+        <Microflows>
+          <Name>Sub_IsEmpty</Name>
+          <Module>TEST_ExcelImporter</Module>
+        </Microflows>
+      </Column_Microflows>
+    </Column>
+    <Column>
+      <ColNumber>0</ColNumber>
+      <Text>Nr</Text>
+      <MappingType>Attribute</MappingType>
+      <IsKey>No</IsKey>
+      <IsReferenceKey>NoKey</IsReferenceKey>
+      <Status>VALID</Status>
+      <Details>Attribute: Nr, type: String</Details>
+      <CaseSensitive>No</CaseSensitive>
+      <FindAttribute>Nr</FindAttribute>
+      <FindReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindObjectType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindMicroflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <DataSource>CellValue</DataSource>
+      <Column_MxObjectType_Reference/>
+      <Column_MxObjectType>
+        <MxObjectType>
+          <Name>State</Name>
+          <Module>TEST_ExcelImporter</Module>
+        </MxObjectType>
+      </Column_MxObjectType>
+      <Column_MxObjectMember>
+        <MxObjectMember>
+          <AttributeName>Nr</AttributeName>
+          <CompleteName>TEST_ExcelImporter.State / Nr</CompleteName>
+        </MxObjectMember>
+      </Column_MxObjectMember>
+      <Column_MxObjectMember_Reference/>
+      <Column_MxObjectReference/>
+      <Column_Microflows/>
+    </Column>
+  </Column_Template>
+  <ReferenceHandling_Template/>
+  <Template_AdditionalProperties>
+    <AdditionalProperties>
+      <PrintStatisticsMessages>AllStatistics</PrintStatisticsMessages>
+      <PrintNotFoundMessages_MainObject>true</PrintNotFoundMessages_MainObject>
+      <IgnoreEmptyKeys>true</IgnoreEmptyKeys>
+      <CommitUnchangedObjects_MainObject>true</CommitUnchangedObjects_MainObject>
+      <RemoveUnsyncedObjects>Nothing</RemoveUnsyncedObjects>
+      <ResetEmptyAssociations>false</ResetEmptyAssociations>
+      <Column_MxObjectMember/>
+    </AdditionalProperties>
+  </Template_AdditionalProperties>
+  <Template_MxObjectType>
+    <MxObjectType>
+      <Name>State</Name>
+      <Module>TEST_ExcelImporter</Module>
+    </MxObjectType>
+  </Template_MxObjectType>
+  <Template_MxObjectReference_ParentAssociation/>
+</ns1:ExcelTemplate>

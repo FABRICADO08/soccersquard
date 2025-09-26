@@ -9,10 +9,11 @@
 
 package excelimporter.actions;
 
+import com.mendix.core.CoreException;
+import com.mendix.systemwideinterfaces.core.IMendixObject;
+import excelimporter.reader.ExcelImporter;
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
-import com.mendix.systemwideinterfaces.core.IMendixObject;
-import com.mendix.systemwideinterfaces.core.UserAction;
 
 /**
  * Start the excel import, The parameter TemplateObject should be a valid parameter, this template is analysed and by this template configuration the filedocument (which should be an excel .xls file)
@@ -21,7 +22,7 @@ import com.mendix.systemwideinterfaces.core.UserAction;
  * 
  * The return value is irrelevant and will be always true
  */
-public class StartImportByTemplate extends UserAction<java.lang.Long>
+public class StartImportByTemplate extends CustomJavaAction<java.lang.Long>
 {
 	/** @deprecated use TemplateObject.getMendixObject() instead. */
 	@java.lang.Deprecated(forRemoval = true)
@@ -52,7 +53,12 @@ public class StartImportByTemplate extends UserAction<java.lang.Long>
 	public java.lang.Long executeAction() throws Exception
 	{
 		// BEGIN USER CODE
-		throw new com.mendix.systemwideinterfaces.MendixRuntimeException("Java action was not implemented");
+		if( this.TemplateObject == null )
+			throw new CoreException( "No template" );
+		if( this.ImportExcelDoc == null )
+			throw new CoreException( "No excel document" );
+
+		return ExcelImporter.startImport(this.getContext(), this.TemplateObject.getMendixObject(), this.ImportExcelDoc.getMendixObject(), this.ImportObjectParameter );
 		// END USER CODE
 	}
 

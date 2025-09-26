@@ -11,9 +11,9 @@ package excelimporter.actions;
 
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
-import com.mendix.systemwideinterfaces.core.UserAction;
+import com.mendix.webui.FeedbackHelper;
 
-public class RefreshClass extends UserAction<java.lang.Boolean>
+public class RefreshClass extends CustomJavaAction<java.lang.Boolean>
 {
 	private final java.lang.String objectType;
 
@@ -30,7 +30,8 @@ public class RefreshClass extends UserAction<java.lang.Boolean>
 	public java.lang.Boolean executeAction() throws Exception
 	{
 		// BEGIN USER CODE
-		throw new com.mendix.systemwideinterfaces.MendixRuntimeException("Java action was not implemented");
+		FeedbackHelper.addRefreshClass(getContext(), this.objectType);
+		return true;
 		// END USER CODE
 	}
 

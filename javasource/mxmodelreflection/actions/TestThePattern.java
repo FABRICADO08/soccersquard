@@ -9,33 +9,77 @@
 
 package mxmodelreflection.actions;
 
+import com.mendix.systemwideinterfaces.MendixRuntimeException;
 import com.mendix.systemwideinterfaces.core.IContext;
-import com.mendix.webui.CustomJavaAction;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
-import com.mendix.systemwideinterfaces.core.UserAction;
+import com.mendix.systemwideinterfaces.core.IMendixObjectMember;
+import com.mendix.webui.CustomJavaAction;
+import com.mendix.webui.FeedbackHelper;
+import mxmodelreflection.DataParser;
+import mxmodelreflection.proxies.AttributeTypes;
+import mxmodelreflection.proxies.TestPattern;
 
-public class TestThePattern extends UserAction<java.lang.Boolean>
+public class TestThePattern extends CustomJavaAction<java.lang.Boolean>
 {
-	/** @deprecated use TestPatternObj.getMendixObject() instead. */
-	@java.lang.Deprecated(forRemoval = true)
-	private final IMendixObject __TestPatternObj;
-	private final mxmodelreflection.proxies.TestPattern TestPatternObj;
+	private IMendixObject __TestPatternObj;
+	private mxmodelreflection.proxies.TestPattern TestPatternObj;
 
-	public TestThePattern(
-		IContext context,
-		IMendixObject _testPatternObj
-	)
+	public TestThePattern(IContext context, IMendixObject TestPatternObj)
 	{
 		super(context);
-		this.__TestPatternObj = _testPatternObj;
-		this.TestPatternObj = _testPatternObj == null ? null : mxmodelreflection.proxies.TestPattern.initialize(getContext(), _testPatternObj);
+		this.__TestPatternObj = TestPatternObj;
 	}
 
 	@java.lang.Override
 	public java.lang.Boolean executeAction() throws Exception
 	{
+		this.TestPatternObj = this.__TestPatternObj == null ? null : mxmodelreflection.proxies.TestPattern.initialize(getContext(), __TestPatternObj);
+
 		// BEGIN USER CODE
-		throw new com.mendix.systemwideinterfaces.MendixRuntimeException("Java action was not implemented");
+
+		IMendixObjectMember<?> member = null;
+		AttributeTypes attributeType = TestPatternObj.getAttributeTypeEnum(getContext());
+
+		if (attributeType != null) {
+			TestPattern.MemberNames memberName = null;
+
+			switch (attributeType) {
+				case AutoNumber:
+				case LongType:
+					memberName = TestPattern.MemberNames.LongAttribute;
+					break;
+				case BooleanType:
+					memberName = TestPattern.MemberNames.BooleanAttribute;
+					break;
+				case Decimal:
+					memberName = TestPattern.MemberNames.DecimalAttribute;
+					break;
+				case EnumType:
+				case StringType:
+				case HashString:
+					memberName = TestPattern.MemberNames.StringAttribute;
+					break;
+				case DateTime:
+					memberName = TestPattern.MemberNames.DateTimeAttribute;
+					break;
+				case IntegerType:
+					memberName = TestPattern.MemberNames.IntegerAttribute;
+					break;
+				default:
+					throw new MendixRuntimeException("Unsupported Type : "+attributeType);
+			}
+
+			if (memberName != null) {
+				member = TestPatternObj.getMendixObject().getMember(getContext(), memberName.toString());
+			}
+		}
+
+		String replacementValue = DataParser.getStringValue(member, this.TestPatternObj.getDisplayPattern(), getContext());
+		
+		this.TestPatternObj.setResult( replacementValue );
+		
+		FeedbackHelper.addRefreshObjectFeedback(getContext(), this.TestPatternObj.getMendixObject().getId());
+		return true;
 		// END USER CODE
 	}
 

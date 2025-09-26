@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns1:ExcelTemplate xmlns:ns1="http://www.mendix.com/">
+  <Nr>45</Nr>
+  <Title>Testcase 3 - Datatypes</Title>
+  <Description>Testcase for each datatype to appear correct in the system.</Description>
+  <SheetIndex>1</SheetIndex>
+  <HeaderRowNumber>1</HeaderRowNumber>
+  <FirstDataRowNumber>2</FirstDataRowNumber>
+  <Status>VALID</Status>
+  <ImportAction>SynchronizeObjects</ImportAction>
+  <Column_Template>
+    <Column>
+      <ColNumber>0</ColNumber>
+      <Text>LastName (String)</Text>
+      <MappingType>Attribute</MappingType>
+      <IsKey>No</IsKey>
+      <IsReferenceKey>NoKey</IsReferenceKey>
+      <Status>VALID</Status>
+      <Details>Attribute: LastName, type: String</Details>
+      <CaseSensitive>No</CaseSensitive>
+      <FindAttribute>LastName</FindAttribute>
+      <FindReference/>
+      <FindObjectType/>
+      <FindMicroflow/>
+      <DataSource>CellValue</DataSource>
+      <Column_MxObjectType_Reference/>
+      <Column_MxObjectType>
+        <MxObjectType>
+          <Name>Customer</Name>
+          <Module>TEST_CRM</Module>
+        </MxObjectType>
+      </Column_MxObjectType>
+      <Column_MxObjectMember>
+        <MxObjectMember>
+          <AttributeName>LastName</AttributeName>
+          <CompleteName>TEST_CRM.Customer / LastName</CompleteName>
+        </MxObjectMember>
+      </Column_MxObjectMember>
+      <Column_MxObjectMember_Reference/>
+      <Column_MxObjectReference/>
+      <Column_Microflows/>
+    </Column>
+    <Column>
+      <ColNumber>1</ColNumber>
+      <Text>Birthday as String (Date)</Text>
+      <MappingType>Attribute</MappingType>
+      <IsKey>No</IsKey>
+      <IsReferenceKey>NoKey</IsReferenceKey>
+      <Status>VALID</Status>
+      <Details>Attribute: Birthday, type: DateTime</Details>
+      <CaseSensitive>No</CaseSensitive>
+      <FindAttribute>Birthday</FindAttribute>
+      <FindReference/>
+      <FindObjectType/>
+      <FindMicroflow/>
+      <DataSource>CellValue</DataSource>
+      <Column_MxObjectType_Reference/>
+      <Column_MxObjectType>
+        <MxObjectType>
+          <Name>Customer</Name>
+          <Module>TEST_CRM</Module>
+        </MxObjectType>
+      </Column_MxObjectType>
+      <Column_MxObjectMember>
+        <MxObjectMember>
+          <AttributeName>Birthday</AttributeName>
+          <CompleteName>TEST_CRM.Customer / Birthday</CompleteName>
+        </MxObjectMember>
+      </Column_MxObjectMember>
+      <Column_MxObjectMember_Reference/>
+      <Column_MxObjectReference/>
+      <Column_Microflows/>
+    </Column>
+    <Column>
+      <ColNumber>2</ColNumber>
+      <Text>TotalWeightOrdered (Float)</Text>
+      <MappingType>Attribute</MappingType>
+      <IsKey>No</IsKey>
+      <IsReferenceKey>NoKey</IsReferenceKey>
+      <Status>VALID</Status>
+      <Details>Attribute: TotalWeightOrdered, type: Float</Details>
+      <CaseSensitive>No</CaseSensitive>
+      <FindAttribute>TotalWeightOrdered</FindAttribute>
+      <FindReference/>
+      <FindObjectType/>
+      <FindMicroflow/>
+      <DataSource>CellValue</DataSource>
+      <Column_MxObjectType_Reference/>
+      <Column_MxObjectType>
+        <MxObjectType>
+          <Name>Customer</Name>
+          <Module>TEST_CRM</Module>
+        </MxObjectType>
+      </Column_MxObjectType>
+      <Column_MxObjectMember>
+        <MxObjectMember>
+          <AttributeName>TotalWeightOrdered</AttributeName>
+          <CompleteName>TEST_CRM.Customer / TotalWeightOrdered</CompleteName>
+        </MxObjectMember>
+      </Column_MxObjectMember>
+      <Column_MxObjectMember_Reference/>
+      <Column_MxObjectReference/>
+      <Column_Microflows/>
+    </Column>
+    <Column>
+      <ColNumber>3</ColNumber>
+      <Text>RefId (Long)</Text>
+      <MappingType>Attribute</MappingType>
+      <IsKey>Yes</IsKey>
+      <IsReferenceKey>YesOnlyMainObject</IsReferenceKey>
+      <Status>VALID</Status>
+      <Details>Attribute: RefId, type: Long</Details>
+      <CaseSensitive>No</CaseSensitive>
+      <FindAttribute>RefId</FindAttribute>
+      <FindReference/>
+      <FindObjectType/>
+      <FindMicroflow/>
+      <DataSource>CellValue</DataSource>
+      <Column_MxObjectType_Reference/>
+      <Column_MxObjectType>
+        <MxObjectType>
+          <Name>Customer</Name>
+          <Module>TEST_CRM</Module>
+        </MxObjectType>
+      </Column_MxObjectType>
+      <Column_MxObjectMember>
+        <MxObjectMember>
+          <AttributeName>RefId</AttributeName>
+          <CompleteName>TEST_CRM.Customer / RefId</CompleteName>
+        </MxObjectMember>
+      </Column_MxObjectMember>
+      <Column_MxObjectMember_Reference/>
+      <Column_MxObjectReference/>
+      <Column_Microflows/>
+    </Column>
+    <Column>
+      <ColNumber>4</ColNumber>
+      <Text>Date1LocalizeYes (DateTime)</Text>
+      <MappingType>Attribute</MappingType>
+      <IsKey>No</IsKey>
+      <IsReferenceKey>NoKey</IsReferenceKey>
+      <Status>VALID</Status>
+      <Details>Attribute: Date1LocalizeYes, type: DateTime</Details>
+      <CaseSensitive>No</CaseSensitive>
+      <FindAttribute>Date1LocalizeYes</FindAttribute>
+      <FindReference/>
+      <FindObjectType/>
+      <FindMicroflow/>
+      <DataSource>CellValue</DataSource>
+      <Column_MxObjectType_Reference/>
+      <Column_MxObjectType>
+        <MxObjectType>
+          <Name>Customer</Name>
+          <Module>TEST_CRM</Module>
+        </MxObjectType>
+      </Column_MxObjectType>
+      <Column_MxObjectMember>
+        <MxObjectMember>
+          <AttributeName>Date1LocalizeYes</AttributeName>
+          <CompleteName>TEST_CRM.Customer / Date1LocalizeYes</CompleteName>
+        </MxObjectMember>
+      </Column_MxObjectMember>
+      <Column_MxObjectMember_Reference/>
+      <Column_MxObjectReference/>
+      <Column_Microflows/>
+    </Column>
+  </Column_Template>
+  <ReferenceHandling_Template/>
+  <Template_AdditionalProperties>
+    <AdditionalProperties>
+      <PrintStatisticsMessages>true</PrintStatisticsMessages>
+      <PrintNotFoundMessages_MainObject>true</PrintNotFoundMessages_MainObject>
+      <IgnoreEmptyKeys>true</IgnoreEmptyKeys>
+      <CommitUnchangedObjects_MainObject>true</CommitUnchangedObjects_MainObject>
+      <RemoveUnsyncedObjects>Nothing</RemoveUnsyncedObjects>
+      <ResetEmptyAssociations>false</ResetEmptyAssociations>
+    </AdditionalProperties>
+  </Template_AdditionalProperties>
+  <Template_MxObjectType>
+    <MxObjectType>
+      <Name>Customer</Name>
+      <Module>TEST_CRM</Module>
+    </MxObjectType>
+  </Template_MxObjectType>
+  <Template_MxObjectReference_ParentAssociation/>
+</ns1:ExcelTemplate>

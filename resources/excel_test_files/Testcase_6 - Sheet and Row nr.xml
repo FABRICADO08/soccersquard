@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns1:ExcelTemplate xmlns:ns1="http://www.mendix.com/">
+  <Nr>627</Nr>
+  <Title>Testcase_6 - Sheet and Row nr</Title>
+  <Description xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+  <SheetIndex>3</SheetIndex>
+  <HeaderRowNumber>1</HeaderRowNumber>
+  <FirstDataRowNumber>2</FirstDataRowNumber>
+  <Status>VALID</Status>
+  <ImportAction>CreateObjects</ImportAction>
+  <Column_Template>
+    <Column>
+      <ColNumber>0</ColNumber>
+      <Text>SheetNrFromExcelSheet</Text>
+      <MappingType>Attribute</MappingType>
+      <IsKey>No</IsKey>
+      <IsReferenceKey>NoKey</IsReferenceKey>
+      <Status>VALID</Status>
+      <Details>Attribute: SheetNrFromExcelSheet, type: Integer</Details>
+      <CaseSensitive>No</CaseSensitive>
+      <FindAttribute>SheetNrFromExcelSheet</FindAttribute>
+      <FindReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindObjectType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindMicroflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <DataSource>CellValue</DataSource>
+      <Column_MxObjectType>
+        <MxObjectType>
+          <Name>Row</Name>
+          <Module>TEST_SheetNrs</Module>
+        </MxObjectType>
+      </Column_MxObjectType>
+      <Column_MxObjectMember>
+        <MxObjectMember>
+          <AttributeName>SheetNrFromExcelSheet</AttributeName>
+          <CompleteName>TEST_SheetNrs.Row / SheetNrFromExcelSheet</CompleteName>
+        </MxObjectMember>
+      </Column_MxObjectMember>
+    </Column>
+    <Column>
+      <ColNumber>1</ColNumber>
+      <Text>RowNrFromExcelSheet</Text>
+      <MappingType>Attribute</MappingType>
+      <IsKey>No</IsKey>
+      <IsReferenceKey>NoKey</IsReferenceKey>
+      <Status>VALID</Status>
+      <Details>Attribute: RowNrFromExcelSheet, type: Integer</Details>
+      <CaseSensitive>No</CaseSensitive>
+      <FindAttribute>RowNrFromExcelSheet</FindAttribute>
+      <FindReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindObjectType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindMicroflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <DataSource>CellValue</DataSource>
+      <Column_MxObjectType>
+        <MxObjectType>
+          <Name>Row</Name>
+          <Module>TEST_SheetNrs</Module>
+        </MxObjectType>
+      </Column_MxObjectType>
+      <Column_MxObjectMember>
+        <MxObjectMember>
+          <AttributeName>RowNrFromExcelSheet</AttributeName>
+          <CompleteName>TEST_SheetNrs.Row / RowNrFromExcelSheet</CompleteName>
+        </MxObjectMember>
+      </Column_MxObjectMember>
+    </Column>
+    <Column>
+      <ColNumber>2</ColNumber>
+      <Text>Value</Text>
+      <MappingType>Attribute</MappingType>
+      <IsKey>No</IsKey>
+      <IsReferenceKey>NoKey</IsReferenceKey>
+      <Status>VALID</Status>
+      <Details>Attribute: ImportedValue, type: String</Details>
+      <CaseSensitive>No</CaseSensitive>
+      <FindAttribute>ImportedValue</FindAttribute>
+      <FindReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindObjectType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindMicroflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <DataSource>CellValue</DataSource>
+      <Column_MxObjectType>
+        <MxObjectType>
+          <Name>Row</Name>
+          <Module>TEST_SheetNrs</Module>
+        </MxObjectType>
+      </Column_MxObjectType>
+      <Column_MxObjectMember>
+        <MxObjectMember>
+          <AttributeName>ImportedValue</AttributeName>
+          <CompleteName>TEST_SheetNrs.Row / ImportedValue</CompleteName>
+        </MxObjectMember>
+      </Column_MxObjectMember>
+    </Column>
+    <Column>
+      <ColNumber>999</ColNumber>
+      <Text>Document property - row number</Text>
+      <MappingType>Attribute</MappingType>
+      <IsKey>No</IsKey>
+      <IsReferenceKey>NoKey</IsReferenceKey>
+      <Status>VALID</Status>
+      <Details>Attribute: RowNrDeterminedByModule, type: Integer</Details>
+      <CaseSensitive>No</CaseSensitive>
+      <FindAttribute>RowNrDeterminedByModule</FindAttribute>
+      <FindReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindObjectType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindMicroflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <DataSource>DocumentPropertyRowNr</DataSource>
+      <Column_MxObjectType>
+        <MxObjectType>
+          <Name>Row</Name>
+          <Module>TEST_SheetNrs</Module>
+        </MxObjectType>
+      </Column_MxObjectType>
+      <Column_MxObjectMember>
+        <MxObjectMember>
+          <AttributeName>RowNrDeterminedByModule</AttributeName>
+          <CompleteName>TEST_SheetNrs.Row / RowNrDeterminedByModule</CompleteName>
+        </MxObjectMember>
+      </Column_MxObjectMember>
+    </Column>
+    <Column>
+      <ColNumber>999</ColNumber>
+      <Text>Document property - sheet number</Text>
+      <MappingType>Attribute</MappingType>
+      <IsKey>No</IsKey>
+      <IsReferenceKey>NoKey</IsReferenceKey>
+      <Status>VALID</Status>
+      <Details>Attribute: SheetNrDeterminedByModule, type: Integer</Details>
+      <CaseSensitive>No</CaseSensitive>
+      <FindAttribute>SheetNrDeterminedByModule</FindAttribute>
+      <FindReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindObjectType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindMicroflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <DataSource>DocumentPropertySheetNr</DataSource>
+      <Column_MxObjectType>
+        <MxObjectType>
+          <Name>Row</Name>
+          <Module>TEST_SheetNrs</Module>
+        </MxObjectType>
+      </Column_MxObjectType>
+      <Column_MxObjectMember>
+        <MxObjectMember>
+          <AttributeName>SheetNrDeterminedByModule</AttributeName>
+          <CompleteName>TEST_SheetNrs.Row / SheetNrDeterminedByModule</CompleteName>
+        </MxObjectMember>
+      </Column_MxObjectMember>
+    </Column>
+  </Column_Template>
+  <Template_AdditionalProperties>
+    <AdditionalProperties>
+      <PrintStatisticsMessages>AllStatistics</PrintStatisticsMessages>
+      <PrintNotFoundMessages_MainObject>true</PrintNotFoundMessages_MainObject>
+      <IgnoreEmptyKeys>true</IgnoreEmptyKeys>
+      <CommitUnchangedObjects_MainObject>true</CommitUnchangedObjects_MainObject>
+      <RemoveUnsyncedObjects>Nothing</RemoveUnsyncedObjects>
+      <ResetEmptyAssociations>false</ResetEmptyAssociations>
+    </AdditionalProperties>
+  </Template_AdditionalProperties>
+  <Template_MxObjectType>
+    <MxObjectType>
+      <Name>Row</Name>
+      <Module>TEST_SheetNrs</Module>
+    </MxObjectType>
+  </Template_MxObjectType>
+  <Template_MxObjectReference_ParentAssociation>
+    <MxObjectReference>
+      <Module>TEST_SheetNrs</Module>
+      <Name>Row_Sheet</Name>
+    </MxObjectReference>
+  </Template_MxObjectReference_ParentAssociation>
+</ns1:ExcelTemplate>

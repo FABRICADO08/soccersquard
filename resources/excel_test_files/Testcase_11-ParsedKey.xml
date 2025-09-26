@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ns1:ExcelTemplate xmlns:ns1="http://www.mendix.com/">
+  <Nr>1</Nr>
+  <Title>TestParsedKey</Title>
+  <Description xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+  <SheetIndex>1</SheetIndex>
+  <HeaderRowNumber>1</HeaderRowNumber>
+  <FirstDataRowNumber>2</FirstDataRowNumber>
+  <Status>VALID</Status>
+  <ImportAction>SynchronizeObjects</ImportAction>
+  <Column_Template>
+    <Column>
+      <ColNumber>0</ColNumber>
+      <Text>TextKey</Text>
+      <MappingType>Attribute</MappingType>
+      <IsKey>Yes</IsKey>
+      <IsReferenceKey>YesOnlyMainObject</IsReferenceKey>
+      <Status>VALID</Status>
+      <Details>Attribute: Text, type: String</Details>
+      <CaseSensitive>No</CaseSensitive>
+      <FindAttribute>Text</FindAttribute>
+      <FindReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindObjectType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindMicroflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <DataSource>CellValue</DataSource>
+      <Column_MxObjectType_Reference/>
+      <Column_MxObjectType>
+        <MxObjectType>
+          <Name>DataTypes</Name>
+          <Module>TEST_ExcelImporter</Module>
+        </MxObjectType>
+      </Column_MxObjectType>
+      <Column_MxObjectMember>
+        <MxObjectMember>
+          <AttributeName>Text</AttributeName>
+          <CompleteName>TEST_ExcelImporter.DataTypes / Text</CompleteName>
+        </MxObjectMember>
+      </Column_MxObjectMember>
+      <Column_MxObjectMember_Reference/>
+      <Column_MxObjectReference/>
+      <Column_Microflows/>
+    </Column>
+    <Column>
+      <ColNumber>1</ColNumber>
+      <Text>EnumKey</Text>
+      <MappingType>Attribute</MappingType>
+      <IsKey>Yes</IsKey>
+      <IsReferenceKey>YesOnlyMainObject</IsReferenceKey>
+      <Status>VALID</Status>
+      <Details>Attribute: ParsedEnumerationAttr, type: Enum</Details>
+      <CaseSensitive>No</CaseSensitive>
+      <FindAttribute>ParsedEnumerationAttr</FindAttribute>
+      <FindReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindObjectType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindMicroflow>TEST_ExcelImporter.TestEnumParser</FindMicroflow>
+      <DataSource>CellValue</DataSource>
+      <Column_MxObjectType_Reference/>
+      <Column_MxObjectType>
+        <MxObjectType>
+          <Name>DataTypes</Name>
+          <Module>TEST_ExcelImporter</Module>
+        </MxObjectType>
+      </Column_MxObjectType>
+      <Column_MxObjectMember>
+        <MxObjectMember>
+          <AttributeName>ParsedEnumerationAttr</AttributeName>
+          <CompleteName>TEST_ExcelImporter.DataTypes / ParsedEnumerationAttr</CompleteName>
+        </MxObjectMember>
+      </Column_MxObjectMember>
+      <Column_MxObjectMember_Reference/>
+      <Column_MxObjectReference/>
+      <Column_Microflows>
+        <Microflows>
+          <Name>TestEnumParser</Name>
+          <Module>TEST_ExcelImporter</Module>
+        </Microflows>
+      </Column_Microflows>
+    </Column>
+    <Column>
+      <ColNumber>2</ColNumber>
+      <Text>FloatValue</Text>
+      <MappingType>Attribute</MappingType>
+      <IsKey>No</IsKey>
+      <IsReferenceKey>NoKey</IsReferenceKey>
+      <Status>VALID</Status>
+      <Details>Attribute: DecimalFloat, type: Decimal</Details>
+      <CaseSensitive>No</CaseSensitive>
+      <FindAttribute>DecimalFloat</FindAttribute>
+      <FindReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindObjectType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindMicroflow>TEST_ExcelImporter.TestDecimalParser</FindMicroflow>
+      <DataSource>CellValue</DataSource>
+      <Column_MxObjectType_Reference/>
+      <Column_MxObjectType>
+        <MxObjectType>
+          <Name>DataTypes</Name>
+          <Module>TEST_ExcelImporter</Module>
+        </MxObjectType>
+      </Column_MxObjectType>
+      <Column_MxObjectMember>
+        <MxObjectMember>
+          <AttributeName>DecimalFloat</AttributeName>
+          <CompleteName>TEST_ExcelImporter.DataTypes / DecimalFloat</CompleteName>
+        </MxObjectMember>
+      </Column_MxObjectMember>
+      <Column_MxObjectMember_Reference/>
+      <Column_MxObjectReference/>
+      <Column_Microflows>
+        <Microflows>
+          <Name>TestDecimalParser</Name>
+          <Module>TEST_ExcelImporter</Module>
+        </Microflows>
+      </Column_Microflows>
+    </Column>
+  </Column_Template>
+  <ReferenceHandling_Template/>
+  <Template_AdditionalProperties>
+    <AdditionalProperties>
+      <PrintStatisticsMessages>AllStatistics</PrintStatisticsMessages>
+      <PrintNotFoundMessages_MainObject>true</PrintNotFoundMessages_MainObject>
+      <IgnoreEmptyKeys>true</IgnoreEmptyKeys>
+      <CommitUnchangedObjects_MainObject>true</CommitUnchangedObjects_MainObject>
+      <RemoveUnsyncedObjects>Nothing</RemoveUnsyncedObjects>
+      <ResetEmptyAssociations>false</ResetEmptyAssociations>
+      <Column_MxObjectMember/>
+    </AdditionalProperties>
+  </Template_AdditionalProperties>
+  <Template_MxObjectType>
+    <MxObjectType>
+      <Name>DataTypes</Name>
+      <Module>TEST_ExcelImporter</Module>
+    </MxObjectType>
+  </Template_MxObjectType>
+  <Template_MxObjectReference_ParentAssociation/>
+</ns1:ExcelTemplate>

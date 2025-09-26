@@ -9,16 +9,23 @@
 
 package mxmodelreflection.actions;
 
+import mxmodelreflection.metamodelBuilder.Builder;
+import mxmodelreflection.metamodelBuilder.MetaObjectBuilder;
+import mxmodelreflection.metamodelBuilder.MicroflowBuilder;
+import mxmodelreflection.proxies.Microflows;
+import mxmodelreflection.proxies.Module;
+import mxmodelreflection.proxies.MxObjectMember;
+import mxmodelreflection.proxies.MxObjectType;
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
-import com.mendix.systemwideinterfaces.core.UserAction;
+import com.mendix.webui.FeedbackHelper;
 
 /**
  * Reads all information from the running project and synchronize the full MxModelReflection domain model with the information from the current project
  * 
  * (The return value from this action can be ignored)
  */
-public class SyncObjects extends UserAction<java.lang.Boolean>
+public class SyncObjects extends CustomJavaAction<java.lang.Boolean>
 {
 	public SyncObjects(IContext context)
 	{
@@ -29,7 +36,18 @@ public class SyncObjects extends UserAction<java.lang.Boolean>
 	public java.lang.Boolean executeAction() throws Exception
 	{
 		// BEGIN USER CODE
-		throw new com.mendix.systemwideinterfaces.MendixRuntimeException("Java action was not implemented");
+		Builder builder = new Builder();
+		builder.prepareSynchronization(this.getContext());
+		new MetaObjectBuilder(builder).buildMetaObjects(this.getContext());
+		new MicroflowBuilder(builder).buildMicroflows(this.getContext());
+		builder.removeInactiveModules(this.getContext());
+		
+		FeedbackHelper.addRefreshClass(getContext(), Microflows.getType());
+		FeedbackHelper.addRefreshClass(getContext(), MxObjectType.getType());
+		FeedbackHelper.addRefreshClass(getContext(), Module.getType());
+		FeedbackHelper.addRefreshClass(getContext(), MxObjectMember.getType());
+
+		return true;
 		// END USER CODE
 	}
 

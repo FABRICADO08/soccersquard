@@ -9,16 +9,16 @@
 
 package excelimporter.actions;
 
+import com.mendix.systemwideinterfaces.core.IMendixObject;
+import excelimporter.reader.ExcelImporter;
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
-import com.mendix.systemwideinterfaces.core.IMendixObject;
-import com.mendix.systemwideinterfaces.core.UserAction;
 
 /**
  * Synchronise all excel columns and add/update/remove the existing columns from the template in the parameter.
  * The return value is irrelevant and will be always true
  */
-public class GetHeaderInformationFromExcelFile extends UserAction<java.lang.Boolean>
+public class GetHeaderInformationFromExcelFile extends CustomJavaAction<java.lang.Boolean>
 {
 	/** @deprecated use TemplateObject.getMendixObject() instead. */
 	@java.lang.Deprecated(forRemoval = true)
@@ -46,7 +46,8 @@ public class GetHeaderInformationFromExcelFile extends UserAction<java.lang.Bool
 	public java.lang.Boolean executeAction() throws Exception
 	{
 		// BEGIN USER CODE
-		throw new com.mendix.systemwideinterfaces.MendixRuntimeException("Java action was not implemented");
+		ExcelImporter.getColumns(this.getContext(), this.TemplateObject.getMendixObject(), this.ExcelFileDocument.getMendixObject() );
+		return true;
 		// END USER CODE
 	}
 

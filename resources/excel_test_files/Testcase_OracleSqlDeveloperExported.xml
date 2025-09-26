@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ns1:ExcelTemplate xmlns:ns1="http://www.mendix.com/">
+  <Nr>54</Nr>
+  <Title>Testcase_OracleSqlDeveloperExported</Title>
+  <Description>Tests the import of Oracle SQL Developer exported Excel files, which differ as follows:
+        - uses inlined strings rather than shared strings
+        - dimension field is wrong and only lndicates the top-left cell (and omits the bottom-right one)
+    </Description>
+  <SheetIndex>1</SheetIndex>
+  <HeaderRowNumber>1</HeaderRowNumber>
+  <FirstDataRowNumber>2</FirstDataRowNumber>
+  <Status>VALID</Status>
+  <ImportAction>CreateObjects</ImportAction>
+  <Column_Template>
+    <Column>
+      <ColNumber>0</ColNumber>
+      <Text>ID</Text>
+      <MappingType>DoNotUse</MappingType>
+      <IsKey>No</IsKey>
+      <IsReferenceKey>NoKey</IsReferenceKey>
+      <Status>INFO</Status>
+      <Details xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <CaseSensitive>No</CaseSensitive>
+      <FindAttribute xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindObjectType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindMicroflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <DataSource>CellValue</DataSource>
+      <Column_MxObjectType_Reference/>
+      <Column_MxObjectType>
+        <MxObjectType>
+          <Name>Customer</Name>
+          <Module>TEST_CRM</Module>
+        </MxObjectType>
+      </Column_MxObjectType>
+      <Column_MxObjectMember/>
+      <Column_MxObjectMember_Reference/>
+      <Column_MxObjectReference/>
+      <Column_Microflows/>
+    </Column>
+    <Column>
+      <ColNumber>1</ColNumber>
+      <Text>CELLPHONENUMBER</Text>
+      <MappingType>Attribute</MappingType>
+      <IsKey>No</IsKey>
+      <IsReferenceKey>NoKey</IsReferenceKey>
+      <Status>VALID</Status>
+      <Details>Attribute: CellPhoneNumber, type: String</Details>
+      <CaseSensitive>No</CaseSensitive>
+      <FindAttribute>CellPhoneNumber</FindAttribute>
+      <FindReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindObjectType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindMicroflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <DataSource>CellValue</DataSource>
+      <Column_MxObjectType_Reference/>
+      <Column_MxObjectType>
+        <MxObjectType>
+          <Name>Customer</Name>
+          <Module>TEST_CRM</Module>
+        </MxObjectType>
+      </Column_MxObjectType>
+      <Column_MxObjectMember>
+        <MxObjectMember>
+          <AttributeName>CellPhoneNumber</AttributeName>
+          <CompleteName>TEST_CRM.Customer / CellPhoneNumber</CompleteName>
+        </MxObjectMember>
+      </Column_MxObjectMember>
+      <Column_MxObjectMember_Reference/>
+      <Column_MxObjectReference/>
+      <Column_Microflows/>
+    </Column>
+    <Column>
+      <ColNumber>2</ColNumber>
+      <Text>FIRSTNAME</Text>
+      <MappingType>Attribute</MappingType>
+      <IsKey>No</IsKey>
+      <IsReferenceKey>NoKey</IsReferenceKey>
+      <Status>VALID</Status>
+      <Details>Attribute: FirstName, type: String</Details>
+      <CaseSensitive>No</CaseSensitive>
+      <FindAttribute>FirstName</FindAttribute>
+      <FindReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindObjectType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindMicroflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <DataSource>CellValue</DataSource>
+      <Column_MxObjectType_Reference/>
+      <Column_MxObjectType>
+        <MxObjectType>
+          <Name>Customer</Name>
+          <Module>TEST_CRM</Module>
+        </MxObjectType>
+      </Column_MxObjectType>
+      <Column_MxObjectMember>
+        <MxObjectMember>
+          <AttributeName>FirstName</AttributeName>
+          <CompleteName>TEST_CRM.Customer / FirstName</CompleteName>
+        </MxObjectMember>
+      </Column_MxObjectMember>
+      <Column_MxObjectMember_Reference/>
+      <Column_MxObjectReference/>
+      <Column_Microflows/>
+    </Column>
+    <Column>
+      <ColNumber>3</ColNumber>
+      <Text>DATE2LOCALIZENO</Text>
+      <MappingType>Attribute</MappingType>
+      <IsKey>No</IsKey>
+      <IsReferenceKey>NoKey</IsReferenceKey>
+      <Status>VALID</Status>
+      <Details>Attribute: Date2LocalizeNo, type: DateTime</Details>
+      <CaseSensitive>No</CaseSensitive>
+      <FindAttribute>Date2LocalizeNo</FindAttribute>
+      <FindReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindObjectType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindMicroflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <DataSource>CellValue</DataSource>
+      <Column_MxObjectType_Reference/>
+      <Column_MxObjectType>
+        <MxObjectType>
+          <Name>Customer</Name>
+          <Module>TEST_CRM</Module>
+        </MxObjectType>
+      </Column_MxObjectType>
+      <Column_MxObjectMember>
+        <MxObjectMember>
+          <AttributeName>Date2LocalizeNo</AttributeName>
+          <CompleteName>TEST_CRM.Customer / Date2LocalizeNo</CompleteName>
+        </MxObjectMember>
+      </Column_MxObjectMember>
+      <Column_MxObjectMember_Reference/>
+      <Column_MxObjectReference/>
+      <Column_Microflows/>
+    </Column>
+    <Column>
+      <ColNumber>4</ColNumber>
+      <Text>BIRTHDAY</Text>
+      <MappingType>Attribute</MappingType>
+      <IsKey>No</IsKey>
+      <IsReferenceKey>NoKey</IsReferenceKey>
+      <Status>VALID</Status>
+      <Details>Attribute: Birthday, type: DateTime</Details>
+      <CaseSensitive>No</CaseSensitive>
+      <FindAttribute>Birthday</FindAttribute>
+      <FindReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindObjectType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindMicroflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <DataSource>CellValue</DataSource>
+      <Column_MxObjectType_Reference/>
+      <Column_MxObjectType>
+        <MxObjectType>
+          <Name>Customer</Name>
+          <Module>TEST_CRM</Module>
+        </MxObjectType>
+      </Column_MxObjectType>
+      <Column_MxObjectMember>
+        <MxObjectMember>
+          <AttributeName>Birthday</AttributeName>
+          <CompleteName>TEST_CRM.Customer / Birthday</CompleteName>
+        </MxObjectMember>
+      </Column_MxObjectMember>
+      <Column_MxObjectMember_Reference/>
+      <Column_MxObjectReference/>
+      <Column_Microflows/>
+    </Column>
+    <Column>
+      <ColNumber>5</ColNumber>
+      <Text>PREFIX</Text>
+      <MappingType>Attribute</MappingType>
+      <IsKey>No</IsKey>
+      <IsReferenceKey>NoKey</IsReferenceKey>
+      <Status>VALID</Status>
+      <Details>Attribute: Prefix, type: String</Details>
+      <CaseSensitive>No</CaseSensitive>
+      <FindAttribute>Prefix</FindAttribute>
+      <FindReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindObjectType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindMicroflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <DataSource>CellValue</DataSource>
+      <Column_MxObjectType_Reference/>
+      <Column_MxObjectType>
+        <MxObjectType>
+          <Name>Customer</Name>
+          <Module>TEST_CRM</Module>
+        </MxObjectType>
+      </Column_MxObjectType>
+      <Column_MxObjectMember>
+        <MxObjectMember>
+          <AttributeName>Prefix</AttributeName>
+          <CompleteName>TEST_CRM.Customer / Prefix</CompleteName>
+        </MxObjectMember>
+      </Column_MxObjectMember>
+      <Column_MxObjectMember_Reference/>
+      <Column_MxObjectReference/>
+      <Column_Microflows/>
+    </Column>
+    <Column>
+      <ColNumber>6</ColNumber>
+      <Text>INITIALS</Text>
+      <MappingType>Attribute</MappingType>
+      <IsKey>No</IsKey>
+      <IsReferenceKey>NoKey</IsReferenceKey>
+      <Status>VALID</Status>
+      <Details>Attribute: Initials, type: String</Details>
+      <CaseSensitive>No</CaseSensitive>
+      <FindAttribute>Initials</FindAttribute>
+      <FindReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindObjectType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindMicroflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <DataSource>CellValue</DataSource>
+      <Column_MxObjectType_Reference/>
+      <Column_MxObjectType>
+        <MxObjectType>
+          <Name>Customer</Name>
+          <Module>TEST_CRM</Module>
+        </MxObjectType>
+      </Column_MxObjectType>
+      <Column_MxObjectMember>
+        <MxObjectMember>
+          <AttributeName>Initials</AttributeName>
+          <CompleteName>TEST_CRM.Customer / Initials</CompleteName>
+        </MxObjectMember>
+      </Column_MxObjectMember>
+      <Column_MxObjectMember_Reference/>
+      <Column_MxObjectReference/>
+      <Column_Microflows/>
+    </Column>
+    <Column>
+      <ColNumber>7</ColNumber>
+      <Text>EMAILADDRESS</Text>
+      <MappingType>Attribute</MappingType>
+      <IsKey>No</IsKey>
+      <IsReferenceKey>NoKey</IsReferenceKey>
+      <Status>VALID</Status>
+      <Details>Attribute: EmailAddress, type: String</Details>
+      <CaseSensitive>No</CaseSensitive>
+      <FindAttribute>EmailAddress</FindAttribute>
+      <FindReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindObjectType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindMicroflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <DataSource>CellValue</DataSource>
+      <Column_MxObjectType_Reference/>
+      <Column_MxObjectType>
+        <MxObjectType>
+          <Name>Customer</Name>
+          <Module>TEST_CRM</Module>
+        </MxObjectType>
+      </Column_MxObjectType>
+      <Column_MxObjectMember>
+        <MxObjectMember>
+          <AttributeName>EmailAddress</AttributeName>
+          <CompleteName>TEST_CRM.Customer / EmailAddress</CompleteName>
+        </MxObjectMember>
+      </Column_MxObjectMember>
+      <Column_MxObjectMember_Reference/>
+      <Column_MxObjectReference/>
+      <Column_Microflows/>
+    </Column>
+    <Column>
+      <ColNumber>8</ColNumber>
+      <Text>CHANGEDDATE</Text>
+      <MappingType>DoNotUse</MappingType>
+      <IsKey>No</IsKey>
+      <IsReferenceKey>NoKey</IsReferenceKey>
+      <Status>INFO</Status>
+      <Details xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <CaseSensitive>No</CaseSensitive>
+      <FindAttribute xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindObjectType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindMicroflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <DataSource>CellValue</DataSource>
+      <Column_MxObjectType_Reference/>
+      <Column_MxObjectType>
+        <MxObjectType>
+          <Name>Customer</Name>
+          <Module>TEST_CRM</Module>
+        </MxObjectType>
+      </Column_MxObjectType>
+      <Column_MxObjectMember/>
+      <Column_MxObjectMember_Reference/>
+      <Column_MxObjectReference/>
+      <Column_Microflows/>
+    </Column>
+    <Column>
+      <ColNumber>9</ColNumber>
+      <Text>CREATEDDATE</Text>
+      <MappingType>DoNotUse</MappingType>
+      <IsKey>No</IsKey>
+      <IsReferenceKey>NoKey</IsReferenceKey>
+      <Status>INFO</Status>
+      <Details xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <CaseSensitive>No</CaseSensitive>
+      <FindAttribute xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindObjectType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindMicroflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <DataSource>CellValue</DataSource>
+      <Column_MxObjectType_Reference/>
+      <Column_MxObjectType>
+        <MxObjectType>
+          <Name>Customer</Name>
+          <Module>TEST_CRM</Module>
+        </MxObjectType>
+      </Column_MxObjectType>
+      <Column_MxObjectMember/>
+      <Column_MxObjectMember_Reference/>
+      <Column_MxObjectReference/>
+      <Column_Microflows/>
+    </Column>
+    <Column>
+      <ColNumber>10</ColNumber>
+      <Text>NUMBER</Text>
+      <MappingType>DoNotUse</MappingType>
+      <IsKey>No</IsKey>
+      <IsReferenceKey>NoKey</IsReferenceKey>
+      <Status>INFO</Status>
+      <Details xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <CaseSensitive>No</CaseSensitive>
+      <FindAttribute xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindObjectType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindMicroflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <DataSource>CellValue</DataSource>
+      <Column_MxObjectType_Reference/>
+      <Column_MxObjectType>
+        <MxObjectType>
+          <Name>Customer</Name>
+          <Module>TEST_CRM</Module>
+        </MxObjectType>
+      </Column_MxObjectType>
+      <Column_MxObjectMember_Reference/>
+      <Column_MxObjectReference/>
+      <Column_Microflows/>
+    </Column>
+    <Column>
+      <ColNumber>11</ColNumber>
+      <Text>TOTALWEIGHTORDERED</Text>
+      <MappingType>Attribute</MappingType>
+      <IsKey>No</IsKey>
+      <IsReferenceKey>NoKey</IsReferenceKey>
+      <Status>VALID</Status>
+      <Details>Attribute: TotalWeightOrdered, type: Decimal</Details>
+      <CaseSensitive>No</CaseSensitive>
+      <FindAttribute>TotalWeightOrdered</FindAttribute>
+      <FindReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindObjectType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindMicroflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <DataSource>CellValue</DataSource>
+      <Column_MxObjectType_Reference/>
+      <Column_MxObjectType>
+        <MxObjectType>
+          <Name>Customer</Name>
+          <Module>TEST_CRM</Module>
+        </MxObjectType>
+      </Column_MxObjectType>
+      <Column_MxObjectMember>
+        <MxObjectMember>
+          <AttributeName>TotalWeightOrdered</AttributeName>
+          <CompleteName>TEST_CRM.Customer / TotalWeightOrdered</CompleteName>
+        </MxObjectMember>
+      </Column_MxObjectMember>
+      <Column_MxObjectMember_Reference/>
+      <Column_MxObjectReference/>
+      <Column_Microflows/>
+    </Column>
+    <Column>
+      <ColNumber>12</ColNumber>
+      <Text>DATE1LOCALIZEYES</Text>
+      <MappingType>Attribute</MappingType>
+      <IsKey>No</IsKey>
+      <IsReferenceKey>NoKey</IsReferenceKey>
+      <Status>VALID</Status>
+      <Details>Attribute: Date1LocalizeYes, type: DateTime</Details>
+      <CaseSensitive>No</CaseSensitive>
+      <FindAttribute>Date1LocalizeYes</FindAttribute>
+      <FindReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindObjectType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindMicroflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <DataSource>CellValue</DataSource>
+      <Column_MxObjectType_Reference/>
+      <Column_MxObjectType>
+        <MxObjectType>
+          <Name>Customer</Name>
+          <Module>TEST_CRM</Module>
+        </MxObjectType>
+      </Column_MxObjectType>
+      <Column_MxObjectMember>
+        <MxObjectMember>
+          <AttributeName>Date1LocalizeYes</AttributeName>
+          <CompleteName>TEST_CRM.Customer / Date1LocalizeYes</CompleteName>
+        </MxObjectMember>
+      </Column_MxObjectMember>
+      <Column_MxObjectMember_Reference/>
+      <Column_MxObjectReference/>
+      <Column_Microflows/>
+    </Column>
+    <Column>
+      <ColNumber>13</ColNumber>
+      <Text>FULLNAME</Text>
+      <MappingType>Attribute</MappingType>
+      <IsKey>No</IsKey>
+      <IsReferenceKey>NoKey</IsReferenceKey>
+      <Status>VALID</Status>
+      <Details>Attribute: FullName, type: String</Details>
+      <CaseSensitive>No</CaseSensitive>
+      <FindAttribute>FullName</FindAttribute>
+      <FindReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindObjectType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindMicroflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <DataSource>CellValue</DataSource>
+      <Column_MxObjectType_Reference/>
+      <Column_MxObjectType>
+        <MxObjectType>
+          <Name>Customer</Name>
+          <Module>TEST_CRM</Module>
+        </MxObjectType>
+      </Column_MxObjectType>
+      <Column_MxObjectMember>
+        <MxObjectMember>
+          <AttributeName>FullName</AttributeName>
+          <CompleteName>TEST_CRM.Customer / FullName</CompleteName>
+        </MxObjectMember>
+      </Column_MxObjectMember>
+      <Column_MxObjectMember_Reference/>
+      <Column_MxObjectReference/>
+      <Column_Microflows/>
+    </Column>
+    <Column>
+      <ColNumber>14</ColNumber>
+      <Text>CUSTOMERSTATUS</Text>
+      <MappingType>Attribute</MappingType>
+      <IsKey>No</IsKey>
+      <IsReferenceKey>NoKey</IsReferenceKey>
+      <Status>VALID</Status>
+      <Details>Attribute: CustomerStatus, type: Enum</Details>
+      <CaseSensitive>No</CaseSensitive>
+      <FindAttribute>CustomerStatus</FindAttribute>
+      <FindReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindObjectType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindMicroflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <DataSource>CellValue</DataSource>
+      <Column_MxObjectType_Reference/>
+      <Column_MxObjectType>
+        <MxObjectType>
+          <Name>Customer</Name>
+          <Module>TEST_CRM</Module>
+        </MxObjectType>
+      </Column_MxObjectType>
+      <Column_MxObjectMember>
+        <MxObjectMember>
+          <AttributeName>CustomerStatus</AttributeName>
+          <CompleteName>TEST_CRM.Customer / CustomerStatus</CompleteName>
+        </MxObjectMember>
+      </Column_MxObjectMember>
+      <Column_MxObjectMember_Reference/>
+      <Column_MxObjectReference/>
+      <Column_Microflows/>
+    </Column>
+    <Column>
+      <ColNumber>15</ColNumber>
+      <Text>PHONENUMBER</Text>
+      <MappingType>Attribute</MappingType>
+      <IsKey>No</IsKey>
+      <IsReferenceKey>NoKey</IsReferenceKey>
+      <Status>VALID</Status>
+      <Details>Attribute: PhoneNumber, type: String</Details>
+      <CaseSensitive>No</CaseSensitive>
+      <FindAttribute>PhoneNumber</FindAttribute>
+      <FindReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindObjectType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindMicroflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <DataSource>CellValue</DataSource>
+      <Column_MxObjectType_Reference/>
+      <Column_MxObjectType>
+        <MxObjectType>
+          <Name>Customer</Name>
+          <Module>TEST_CRM</Module>
+        </MxObjectType>
+      </Column_MxObjectType>
+      <Column_MxObjectMember>
+        <MxObjectMember>
+          <AttributeName>PhoneNumber</AttributeName>
+          <CompleteName>TEST_CRM.Customer / PhoneNumber</CompleteName>
+        </MxObjectMember>
+      </Column_MxObjectMember>
+      <Column_MxObjectMember_Reference/>
+      <Column_MxObjectReference/>
+      <Column_Microflows/>
+    </Column>
+    <Column>
+      <ColNumber>16</ColNumber>
+      <Text>LASTNAME</Text>
+      <MappingType>Attribute</MappingType>
+      <IsKey>No</IsKey>
+      <IsReferenceKey>NoKey</IsReferenceKey>
+      <Status>VALID</Status>
+      <Details>Attribute: LastName, type: String</Details>
+      <CaseSensitive>No</CaseSensitive>
+      <FindAttribute>LastName</FindAttribute>
+      <FindReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindObjectType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindMicroflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <DataSource>CellValue</DataSource>
+      <Column_MxObjectType_Reference/>
+      <Column_MxObjectType>
+        <MxObjectType>
+          <Name>Customer</Name>
+          <Module>TEST_CRM</Module>
+        </MxObjectType>
+      </Column_MxObjectType>
+      <Column_MxObjectMember>
+        <MxObjectMember>
+          <AttributeName>LastName</AttributeName>
+          <CompleteName>TEST_CRM.Customer / LastName</CompleteName>
+        </MxObjectMember>
+      </Column_MxObjectMember>
+      <Column_MxObjectMember_Reference/>
+      <Column_MxObjectReference/>
+      <Column_Microflows/>
+    </Column>
+    <Column>
+      <ColNumber>17</ColNumber>
+      <Text>REFID</Text>
+      <MappingType>Attribute</MappingType>
+      <IsKey>No</IsKey>
+      <IsReferenceKey>NoKey</IsReferenceKey>
+      <Status>VALID</Status>
+      <Details>Attribute: RefId, type: Long</Details>
+      <CaseSensitive>No</CaseSensitive>
+      <FindAttribute>RefId</FindAttribute>
+      <FindReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindObjectType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindMicroflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <DataSource>CellValue</DataSource>
+      <Column_MxObjectType_Reference/>
+      <Column_MxObjectType>
+        <MxObjectType>
+          <Name>Customer</Name>
+          <Module>TEST_CRM</Module>
+        </MxObjectType>
+      </Column_MxObjectType>
+      <Column_MxObjectMember>
+        <MxObjectMember>
+          <AttributeName>RefId</AttributeName>
+          <CompleteName>TEST_CRM.Customer / RefId</CompleteName>
+        </MxObjectMember>
+      </Column_MxObjectMember>
+      <Column_MxObjectMember_Reference/>
+      <Column_MxObjectReference/>
+      <Column_Microflows/>
+    </Column>
+    <Column>
+      <ColNumber>18</ColNumber>
+      <Text>SYSTEM$CHANGEDBY</Text>
+      <MappingType>DoNotUse</MappingType>
+      <IsKey>No</IsKey>
+      <IsReferenceKey>NoKey</IsReferenceKey>
+      <Status>INFO</Status>
+      <Details xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <CaseSensitive>No</CaseSensitive>
+      <FindAttribute xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindObjectType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindMicroflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <DataSource>CellValue</DataSource>
+      <Column_MxObjectType_Reference/>
+      <Column_MxObjectType>
+        <MxObjectType>
+          <Name>Customer</Name>
+          <Module>TEST_CRM</Module>
+        </MxObjectType>
+      </Column_MxObjectType>
+      <Column_MxObjectMember/>
+      <Column_MxObjectMember_Reference/>
+      <Column_MxObjectReference/>
+      <Column_Microflows/>
+    </Column>
+    <Column>
+      <ColNumber>19</ColNumber>
+      <Text>SYSTEM$OWNER</Text>
+      <MappingType>DoNotUse</MappingType>
+      <IsKey>No</IsKey>
+      <IsReferenceKey>NoKey</IsReferenceKey>
+      <Status>INFO</Status>
+      <Details xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <CaseSensitive>No</CaseSensitive>
+      <FindAttribute xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindObjectType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <FindMicroflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      <DataSource>CellValue</DataSource>
+      <Column_MxObjectType_Reference/>
+      <Column_MxObjectType>
+        <MxObjectType>
+          <Name>Customer</Name>
+          <Module>TEST_CRM</Module>
+        </MxObjectType>
+      </Column_MxObjectType>
+      <Column_MxObjectMember/>
+      <Column_MxObjectMember_Reference/>
+      <Column_MxObjectReference/>
+      <Column_Microflows/>
+    </Column>
+  </Column_Template>
+  <ReferenceHandling_Template/>
+  <Template_AdditionalProperties>
+    <AdditionalProperties>
+      <PrintStatisticsMessages>AllStatistics</PrintStatisticsMessages>
+      <PrintNotFoundMessages_MainObject>true</PrintNotFoundMessages_MainObject>
+      <IgnoreEmptyKeys>true</IgnoreEmptyKeys>
+      <CommitUnchangedObjects_MainObject>true</CommitUnchangedObjects_MainObject>
+      <RemoveUnsyncedObjects>Nothing</RemoveUnsyncedObjects>
+      <ResetEmptyAssociations>false</ResetEmptyAssociations>
+      <Column_MxObjectMember/>
+    </AdditionalProperties>
+  </Template_AdditionalProperties>
+  <Template_MxObjectType>
+    <MxObjectType>
+      <Name>Customer</Name>
+      <Module>TEST_CRM</Module>
+    </MxObjectType>
+  </Template_MxObjectType>
+  <Template_MxObjectReference_ParentAssociation/>
+</ns1:ExcelTemplate>
