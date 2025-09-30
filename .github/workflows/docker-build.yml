@@ -1,4 +1,4 @@
-name: Build and Push Mendix Docker Image from MPR
+name: Build Docker Image from MPR
 
 on:
   push:
