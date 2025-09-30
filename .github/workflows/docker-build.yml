@@ -21,12 +21,12 @@ jobs:
         git clone https://github.com/mendix/docker-mendix-buildpack.git
         mv docker-mendix-buildpack DockerBuildpack
         
-     - name: Install Mendix Build Tools
-       run: |
-         curl -L -o mxbuild.zip https://cdn.mendix.com/mxbuild/mxbuild-10.19.0.zip  # Adjust URL
-         unzip mxbuild.zip -d /tmp/mxbuild
-         cp -r /tmp/mxbuild/* ./DockerBuildpack/.local/mxbuild/
-         rm -rf mxbuild.zip /tmp/mxbuild
+     #- name: Install Mendix Build Tools
+    #   run: |
+       #  curl -L -o mxbuild.zip https://cdn.mendix.com/mxbuild/mxbuild-10.19.0.zip  # Adjust URL
+        # unzip mxbuild.zip -d /tmp/mxbuild
+      #   cp -r /tmp/mxbuild/* ./DockerBuildpack/.local/mxbuild/
+       #  rm -rf mxbuild.zip /tmp/mxbuild
 
 
     - name: Prepare project directory
