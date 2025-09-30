@@ -39,7 +39,7 @@ jobs:
         docker build \
           --build-arg BUILD_PATH=./project \
           -f DockerBuildpack/Dockerfile \
-          -t ${{ secrets.DOCKER_USERNAME }}/SoccerSquad:latest .
+          -t ${{ secrets.DOCKER_USERNAME }}/soccersquad:latest .
 
     - name: Push Docker Image
-      run: docker push ${{ secrets.DOCKER_USERNAME }}/SoccerSquad:latest
+      run: docker push ${{ secrets.DOCKER_USERNAME }}/soccersquad:latest
