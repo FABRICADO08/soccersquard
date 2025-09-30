@@ -12,8 +12,9 @@ package excelimporter.actions;
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
 import com.mendix.webui.FeedbackHelper;
+import com.mendix.systemwideinterfaces.core.UserAction;
 
-public class RefreshClass extends CustomJavaAction<java.lang.Boolean>
+public class RefreshClass extends UserAction<java.lang.Boolean>
 {
 	private final java.lang.String objectType;
 

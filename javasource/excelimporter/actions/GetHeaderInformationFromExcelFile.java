@@ -13,12 +13,13 @@ import com.mendix.systemwideinterfaces.core.IMendixObject;
 import excelimporter.reader.ExcelImporter;
 import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.webui.CustomJavaAction;
+import com.mendix.systemwideinterfaces.core.UserAction;
 
 /**
  * Synchronise all excel columns and add/update/remove the existing columns from the template in the parameter.
  * The return value is irrelevant and will be always true
  */
-public class GetHeaderInformationFromExcelFile extends CustomJavaAction<java.lang.Boolean>
+public class GetHeaderInformationFromExcelFile extends UserAction<java.lang.Boolean>
 {
 	/** @deprecated use TemplateObject.getMendixObject() instead. */
 	@java.lang.Deprecated(forRemoval = true)
