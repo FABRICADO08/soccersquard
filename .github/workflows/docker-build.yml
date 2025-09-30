@@ -24,7 +24,7 @@ jobs:
     - name: Unzip MDA file from release folder
       run: |
         mkdir project
-        unzip releases/SoccerSquard.mda -d project
+        unzip main/releases/SoccerSquard.mda -d project
 
     - name: Log in to Docker Hub
       uses: docker/login-action@v2
