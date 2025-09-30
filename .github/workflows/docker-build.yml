@@ -1,9 +1,9 @@
-name: Build and Push Mendix Docker Image from MDA Release
+name: Build and Push Mendix Docker Image from MDA in release folder
 
 on:
-  workflow_dispatch:
   push:
     branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -16,32 +16,15 @@ jobs:
     - name: Install unzip
       run: sudo apt-get update && sudo apt-get install unzip -y
 
-    - name: Download latest release MDA
-      uses: actions/github-script@v6
-      id: get_release
-      with:
-        script: |
-          const latestRelease = await github.rest.repos.getLatestRelease({
-            owner: context.repo.owner,
-            repo: context.repo.repo
-          });
-          const asset = latestRelease.data.assets.find(a => a.name.endsWith('.mda'));
-          if (!asset) throw new Error('No .mda file found in latest release');
-          return asset.browser_download_url;
-
-    - name: Download MDA file
-      run: |
-        curl -L "${{ steps.get_release.outputs.result }}" -o SoccerSquard.mda
-
     - name: Clone Mendix Docker Buildpack
       run: |
         git clone https://github.com/mendix/docker-mendix-buildpack.git
         mv docker-mendix-buildpack DockerBuildpack
 
-    - name: Unzip MDA file
+    - name: Unzip MDA file from release folder
       run: |
         mkdir project
-        unzip SoccerSquard.mda -d project
+        unzip release/SoccerSquard.mda -d project
 
     - name: Log in to Docker Hub
       uses: docker/login-action@v2
@@ -54,7 +37,7 @@ jobs:
         docker build \
           --build-arg BUILD_PATH=./project \
           -f DockerBuildpack/Dockerfile \
-          -t ${{ secrets.DOCKER_USERNAME }}/soccersquard:latest .
+          -t ${{ secrets.DOCKER_USERNAME }}/SoccerSquard:latest .
 
     - name: Push Docker Image
-      run: docker push ${{ secrets.DOCKER_USERNAME }}/soccersquard:latest
+      run: docker push ${{ secrets.DOCKER_USERNAME }}/SoccerSquard:latest
