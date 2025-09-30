@@ -1,4 +1,4 @@
-name: Build and Push Mendix Docker Image from MDA in release folder
+name: Build and Push Mendix Docker Image from MPR
 
 on:
   push:
@@ -21,16 +21,11 @@ jobs:
         git clone https://github.com/mendix/docker-mendix-buildpack.git
         mv docker-mendix-buildpack DockerBuildpack
 
-    - name: Unzip MDA file from release folder
+    - name: Prepare project directory
       run: |
-       mkdir project              
-              MDA_FILE=$(find . -type f -name "*.mda" | head -n 1)
-              if [ -n "$MDA_FILE" ]; then
-                unzip -o "$MDA_FILE" -d project
-              else
-                echo "Error: No .mda file found in the repository"
-                exit 1
-              fi
+        mkdir -p project
+        cp SoccerSquad.mpr project/
+        cp -r theme resources widgets userlib vendorlib .gitignore project/  # Copy relevant project files
 
     - name: Log in to Docker Hub
       uses: docker/login-action@v2
