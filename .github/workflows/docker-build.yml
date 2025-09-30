@@ -23,8 +23,14 @@ jobs:
 
     - name: Unzip MDA file from release folder
       run: |
-        mkdir project
-        unzip releases/SoccerSquad.mda -d project
+       mkdir project              
+              MDA_FILE=$(find . -type f -name "*.mda" | head -n 1)
+              if [ -n "$MDA_FILE" ]; then
+                unzip -o "$MDA_FILE" -d project
+              else
+                echo "Error: No .mda file found in the repository"
+                exit 1
+              fi
 
     - name: Log in to Docker Hub
       uses: docker/login-action@v2
