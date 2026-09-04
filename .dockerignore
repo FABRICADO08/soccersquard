@@ -1,0 +1,26 @@
+# Keep the Docker build context (and image) lean.
+# Everything the Mendix buildpack needs is copied from the repository root.
+
+# VCS & CI
+.git
+.github
+.gitignore
+
+# Docker / build artefacts
+Dockerfile
+.dockerignore
+docker-build.yml
+
+# Documentation & local notes
+README.md
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+*.log
+
+# Local Mendix runtime data (never ship local databases)
+*.db
+*.sqlite
+mendix-data/

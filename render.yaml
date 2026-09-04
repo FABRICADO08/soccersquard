@@ -1,0 +1,42 @@
+# Render Blueprint — deploys this Mendix app (SoccerSquad) as a Docker web service.
+# Docs: https://render.com/docs/blueprint-spec
+#
+# Usage:
+#   1. Push this repository to GitHub.
+#   2. In Render: New → Blueprint → select this repository.
+#   3. Render reads this file and provisions the web service automatically.
+#      You will be prompted to fill in the secret `ADMIN_PASSWORD` value.
+
+services:
+  - type: web
+    name: soccersquad
+    runtime: docker
+    # Dockerfile lives at the repository root
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: free
+    # Mendix listens on the port from the PORT env var; Render injects it.
+    envVars:
+      # The admin (MxAdmin) password for the app. Marked as a secret — Render
+      # will prompt you to provide the value when the blueprint is applied.
+      - key: ADMIN_PASSWORD
+        sync: false
+      # Recommended for production: require a scheduled event / request
+      # authentication token. Generate a random value and keep it secret.
+      - key: SCHEDULED_EVENT_EXECUTION_TOKEN
+        sync: false
+      # Persist data across deploys by attaching a managed PostgreSQL database
+      # (see `databases` below) and exposing its connection string. The Mendix
+      # buildpack reads DATABASE_URL automatically.
+      - key: DATABASE_URL
+        fromDatabase:
+          name: soccersquad-db
+          property: connectionString
+
+# A small managed PostgreSQL database so app data survives redeploys.
+# Remove this block (and the DATABASE_URL env var above) if you want the app to
+# start with a fresh, in-memory/embedded database on every deploy instead.
+databases:
+  - name: soccersquad-db
+    plan: free
+    databaseName: soccersquad
