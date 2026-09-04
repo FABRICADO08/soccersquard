@@ -26,10 +26,11 @@ jobs:
     - name: Prepare project directory
       run: |
         mkdir -p project
-        cp SoccerSquad.mpr project/
-        cp -r theme resources widgets userlib vendorlib .gitignore project/  # Copy relevant project files
+        # Copy ALL files the Mendix buildpack needs to compile the app from source.
+        cp SoccerSquad.mpr data-snapshot.zip project/
+        cp -r theme themesource javasource javascriptsource resources widgets userlib vendorlib project/
         cp -r DockerBuildpack/scripts/ ./                                 # copy buildpack scripts to the root or adjust Dockerfile paths
-        
+
 
     - name: Log in to Docker Hub
       uses: docker/login-action@v2.2.0
