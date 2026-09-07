@@ -50,6 +50,7 @@ RUN chmod +rx /opt/mendix/buildpack/bin/bootstrap-python && \
 ENV PYTHONPATH="/opt/mendix/buildpack/lib/:/opt/mendix/buildpack/:/opt/mendix/buildpack/lib/python3.6/site-packages/"
 
 ENV NGINX_CUSTOM_BIN_PATH=/usr/sbin/nginx
+ENV JAVA_VERSION=21
 
 RUN mkdir -p /tmp/buildcache /tmp/cf-deps /var/mendix/build /var/mendix/build/.local && \
     chmod +rx /opt/mendix/buildpack/compilation && \
