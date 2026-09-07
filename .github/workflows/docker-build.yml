@@ -9,6 +9,9 @@ permissions:
   contents: read
   packages: write
 
+env:
+  DOCKER_BUILDPACK_VERSION: v6.0.7
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,23 +20,28 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v4
 
-    - name: Install unzip
-      run: sudo apt-get update && sudo apt-get install unzip -y
-
     - name: Clone Mendix Docker Buildpack
       run: |
-        git clone https://github.com/mendix/docker-mendix-buildpack.git
-        mv docker-mendix-buildpack DockerBuildpack
-        
-    
+        git clone \
+          --branch "$DOCKER_BUILDPACK_VERSION" \
+          --depth 1 \
+          --config core.autocrlf=false \
+          https://github.com/mendix/docker-mendix-buildpack.git \
+          /tmp/docker-mendix-buildpack
 
-    - name: Prepare project directory
+    - name: Compile Mendix project
+      working-directory: /tmp/docker-mendix-buildpack
       run: |
-        mkdir -p project
-        # Copy ALL files the Mendix buildpack needs to compile the app from source.
-        cp SoccerSquad.mpr data-snapshot.zip project/
-        cp -r theme themesource javasource javascriptsource resources widgets userlib vendorlib project/
-        cp -r DockerBuildpack/scripts/ ./                                 # copy buildpack scripts to the root or adjust Dockerfile paths
+        ./build.py \
+          --source "$GITHUB_WORKSPACE" \
+          --destination /tmp/mendix-docker-context \
+          build-mda-dir
+
+    - name: Build Mendix rootfs images
+      working-directory: /tmp/docker-mendix-buildpack
+      run: |
+        docker build -t mendix-rootfs:app -f rootfs-app.dockerfile .
+        docker build -t mendix-rootfs:builder -f rootfs-builder.dockerfile .
 
     - name: Set image name
       run: echo "IMAGE_NAME=ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/soccersquad:latest" >> "$GITHUB_ENV"
@@ -46,11 +54,7 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Build Docker Image
-      run: |
-        docker build \
-          --build-arg BUILD_PATH=./project \
-          -f DockerBuildpack/Dockerfile \
-          -t "$IMAGE_NAME" .
+      run: docker build -t "$IMAGE_NAME" /tmp/mendix-docker-context
 
     - name: Push Docker Image
       run: docker push "$IMAGE_NAME"
