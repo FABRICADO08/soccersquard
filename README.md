@@ -11,7 +11,7 @@ Docker container:
 
 - **`Dockerfile`** — builds the app using the official
   [Mendix Docker Buildpack](https://github.com/mendix/docker-mendix-buildpack).
-  It compiles `SoccerSquad.mpr` and bundles the Mendix runtime, a JDK and nginx.
+  It compiles `SoccerSquad.mpr` and bundles the Mendix runtime, JDK 21 and nginx.
 - **`render.yaml`** — a [Render Blueprint](https://render.com/docs/blueprint-spec)
   that deploys the Docker image as a web service on Render.
 - **`.dockerignore`** — keeps the build context lean.
