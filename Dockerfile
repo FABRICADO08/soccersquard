@@ -17,6 +17,48 @@ RUN git clone \
     https://github.com/mendix/docker-mendix-buildpack.git .
 
 # ---------------------------------------------------------------------------
+# MxBuild stage
+# ---------------------------------------------------------------------------
+
+FROM registry.access.redhat.com/ubi9/ubi-minimal:latest AS mxbuild
+
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
+
+ARG USER_UID=1001
+ARG MPR_FILE=SoccerSquad.mpr
+
+RUN rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm && \
+    microdnf update -y && \
+    microdnf install -y glibc-langpack-en openssl fontconfig tzdata-java libgdiplus libicu tar gzip jq python311 java-11-openjdk-devel java-17-openjdk-devel java-21-openjdk-devel && \
+    microdnf clean all && rm -rf /var/cache/yum
+
+RUN echo "mendix:x:${USER_UID}:${USER_UID}:mendix user:/workdir:/sbin/nologin" >> /etc/passwd
+
+COPY ${MPR_FILE} /tmp/project.mpr
+
+RUN MENDIX_VERSION="$(python3.11 -c 'import sqlite3; print(sqlite3.connect("/tmp/project.mpr").execute("SELECT _ProductVersion FROM _MetaData LIMIT 1").fetchone()[0])')" && \
+    mkdir -p /opt/mendix && \
+    curl -fsSL "https://download.mendix.com/runtimes/mxbuild-${MENDIX_VERSION}.tar.gz" | \
+    tar -C /opt/mendix -xzf - --owner=root:0 --group=root:0 --mode='uga=rX' && \
+    rm /tmp/project.mpr
+
+COPY --from=buildpack --chown=0:0 --chmod=0755 /buildpack/mxbuild/build /opt/mendix/build
+
+ENV HOME=/workdir
+
+RUN mkdir -p /workdir/project /workdir/output /workdir/.local/share/Mendix && \
+    chown -R ${USER_UID}:${USER_UID} /workdir && \
+    chmod -R 755 /workdir
+
+COPY --chown=${USER_UID}:${USER_UID} . /workdir/project
+
+USER ${USER_UID}
+WORKDIR /workdir
+
+RUN /opt/mendix/build "${MPR_FILE}" unversioned
+
+# ---------------------------------------------------------------------------
 # Builder stage
 # ---------------------------------------------------------------------------
 
@@ -84,7 +126,11 @@ ENV PYTHONPATH="/opt/mendix/buildpack/lib/:/opt/mendix/buildpack/:/opt/mendix/bu
 
 ENV NGINX_CUSTOM_BIN_PATH=/usr/sbin/nginx
 
-COPY . /opt/mendix/build
+COPY --from=mxbuild /workdir/output.mda /tmp/output.mda
+
+RUN python3 -m zipfile -e /tmp/output.mda /opt/mendix/build && \
+    rm /tmp/output.mda
+
 COPY --from=buildpack /buildpack/scripts/startup.py /buildpack/scripts/vcap_application.json /opt/mendix/build/
 
 RUN mkdir -p /tmp/buildcache/bust /tmp/cf-deps /var/mendix/build /var/mendix/build/.local && \
