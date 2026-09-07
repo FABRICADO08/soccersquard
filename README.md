@@ -16,7 +16,7 @@ Docker container:
   that deploys the Docker image as a web service on Render.
 - **`.dockerignore`** — keeps the build context lean.
 - **`.github/workflows/docker-build.yml`** — GitHub Actions workflow that builds
-  and pushes the image to Docker Hub.
+  and pushes the image to GitHub Container Registry (GHCR).
 
 ### Build & run locally
 
@@ -50,6 +50,5 @@ Then open http://localhost:8080 and log in as `MxAdmin` with the password you se
 
 ### Required secrets (CI)
 
-The GitHub Actions workflow needs these repository secrets to push to Docker Hub:
-- `DOCKER_USERNAME`
-- `DOCKER_PASSWORD`
+The GitHub Actions workflow pushes to GitHub Container Registry (GHCR) using the
+built-in `GITHUB_TOKEN`, so no extra registry secrets are required.
